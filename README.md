@@ -17,7 +17,7 @@ function plus (a, b) {
 plus = Hoox(plus)
 
 //now you can control input and output
-plus.hook(function (plus, args) {
+plus.hook(function (fn, args) {
 
   var value = fn.apply(null, args.map(Math.round))
 
