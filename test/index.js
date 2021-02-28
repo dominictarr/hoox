@@ -129,3 +129,24 @@ tape('check a thing, maybe return something different, else change result', func
   t.end()
 
 })
+
+tape('preserve own properties', function (t) {
+
+  var add = function (a, b) {
+    return a + b
+  };
+
+  add.operation = 'addition'
+  add.obj = {}
+  add.hook = null
+
+  var h = Hoox(add)
+
+  t.equal(h(2, 4), 6)
+  t.equal(h.operation, 'addition')
+  t.deepEqual(h.obj, {})
+  t.ok(typeof h.hook === 'function')
+
+  t.end()
+
+})

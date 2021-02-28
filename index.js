@@ -10,6 +10,8 @@ module.exports = function hookable(fn) {
     return fn.apply(this, [].slice.call(arguments))
   }
 
+  Object.assign(hooked, fn)
+
   hooked.hook = function (hook) {
     fn = wrap(fn, hook)
     return this
